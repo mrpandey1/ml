@@ -11,7 +11,7 @@ X = dataset.iloc[:, [2, 3]].values
 y = dataset.iloc[:, 4].values
 
 # Splitting the dataset into the Training set and Test set
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
 # Feature Scaling
@@ -22,7 +22,7 @@ X_test = sc.transform(X_test)
 
 # Fitting Kernel SVM to the Training set
 from sklearn.svm import SVC
-classifier = SVC(kernel = 'rbf', random_state = 0)
+classifier = SVC(kernel='rbf',degree=5,random_state=0)
 classifier.fit(X_train, y_train)
 
 # Predicting the Test set results
